@@ -1,0 +1,6 @@
+{
+	"ip"	:	"a,b,c,d",
+	"puerto"	:	54000,
+	"root_dir"	:	"/home/user/tarea2/WWW-data",
+	"notFoundFile": "/home/user/Tarea-2-redes/WWW-error"
+}
