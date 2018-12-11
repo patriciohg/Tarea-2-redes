@@ -1,6 +1,6 @@
 {
-	"ip"	:	"a,b,c,d",
-	"puerto"	:	54000,
-	"root_dir"	:	"/home/user/tarea2/WWW-data",
-	"notFoundFile": "/home/user/Tarea-2-redes/WWW-error"
+	"ip":	"127.0.0.1",
+	"puerto":	80,
+	"root_dir":	"/home/patriciohg/Tarea-2-redes/WWW-data",
+	"notFoundFile": "/home/patriciohg/Tarea-2-redes/WWW-error"
 }
