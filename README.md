@@ -16,8 +16,8 @@ Instrucciones:
 	{
 		"ip":	"127.0.0.1",
 		"puerto":	80,
-		"root_dir":	"/home/patriciohg/Tarea-2-redes/WWW-data/",
-		"notFoundFile": "/home/patriciohg/Tarea-2-redes/WWW-error/"
+		"root_dir":	"/home/patriciohg/Tarea02_RedesNueva-Hinojosa_Lizana_Diaz/WWW-data/",
+		"notFoundFile": "/home/patriciohg/Tarea02_RedesNueva-Hinojosa_Lizana_Diaz/WWW-error/"
 	}
 3)Una vez hecho esto, ya se puede proceder a la ejecucion del programa, para esto desde el directorio principal en este caso "Tarea-2-redes", desde la terminal , ejecutamos el comando "./Server".
 

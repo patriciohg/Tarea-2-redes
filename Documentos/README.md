@@ -16,15 +16,13 @@ Instrucciones:
 	{
 		"ip":	"127.0.0.1",
 		"puerto":	80,
-		"root_dir":	"/home/patriciohg/Tarea-2-redes/WWW-data/",
-		"notFoundFile": "/home/patriciohg/Tarea-2-redes/WWW-error/"
+		"root_dir":	"/home/patriciohg/Tarea02_RedesNueva-Hinojosa_Lizana_Diaz/WWW-data/",
+		"notFoundFile": "/home/patriciohg/Tarea02_RedesNueva-Hinojosa_Lizana_Diaz/WWW-error/"
 	}
-3)Una vez hecho esto, ya se puede proceder a la ejecucion del programa, para esto desde el directorio principal en este caso "Tarea-2-redes", desde la terminal , ejecutamos el comando "sudo ./Server", el sudo es debido a que se deben tener permisos de administrador para poder dejar el puerto 80 a la escucha.
+3)Una vez hecho esto, ya se puede proceder a la ejecucion del programa, para esto desde el directorio principal en este caso "Tarea-2-redes", desde la terminal , ejecutamos el comando "./Server".
 
 4)Ingresar a algun navegador y desde este en la parte de dirección ingresar a la ip puesta en la configuración y solicitar alguna pagina, ejemplo seria:
-
-	ingresar desde el navegador a la direccion: "127.0.0.1:80/index.html"
-
+ingresar desde el navegador a la direccion: "127.0.0.1:80/index.html"
 5)para finalizar el servidor presionar "Ctrl+c".
 
 
