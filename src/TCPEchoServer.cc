@@ -31,29 +31,34 @@ void HandleTCPClient(TCPSocket *sock) {
 
   //variables de control para obtener el get que envia el cliente
   int cont= 0,control =1,i=0;
-  //variables paraalmacenar la pagina el la respuesta al cliente
+  //variables para almacenar la pagina el la respuesta al cliente
   std::string pagina="",respuesta ="";
 
   uint32_t recvMsgSize;
 while((recvMsgSize = sock->recv(echoBuffer, RCVBUFSIZE))>=RCVBUFSIZE){    
       //obtencion del GET enviado por el cliente
       i =0;
-      while(control == 1){//aqui obtengo la pagina
+      while(control == 1){//aqui se obtiene la pagina
         i++;
         pagina="";
         if(echoBuffer[i]=='/'){
-          cont=i+1;
-          while(1){
-            if(echoBuffer[cont]==' '){//ya obteniendo la pagina
-              respuesta ="";
-              respuesta = leer(pagina);//una vez obtenida la pagina se envia a la funcion leer() que comprueba si existe la pagina y retorna la pagina html
-              sock->send(respuesta.c_str(),respuesta.size());//se envia la pagina al socket
-              control = 0;//se finalizan los while
-              break;
-            } 
-            pagina+=echoBuffer[cont];//se va almacenando la pagina en esta variable
-            cont++;
-          }      
+          if(echoBuffer[i+1]== ' '){
+              respuesta = leer("error");
+          }else{
+            cont=i+1;
+            while(1){
+              if(echoBuffer[cont]==' '){//ya obteniendo la pagina
+                respuesta ="";
+                respuesta = leer(pagina);//una vez obtenida la pagina se envia a la funcion leer() que comprueba si existe la pagina y retorna la pagina html
+                sock->send(respuesta.c_str(),respuesta.size());//se envia la pagina al socket
+                control = 0;//se finalizan los while
+                break;
+              } 
+              pagina+=echoBuffer[cont];//se va almacenando la pagina en esta variable
+              cont++;
+            }  
+          }
+    
         }
     }
   }if(recvMsgSize<0){//si el tamaño del msg es <0 quiere decir que fallo el envio de datos
@@ -70,18 +75,18 @@ json leer_json(){//funcion para leer el archivo json
 }
 std::string leer(std::string pagina){//funcion para leer los html que solicite el cliente
     std::ifstream bafer(root_dir+pagina);//se abre el archivo
-    std::string a,n="", response="",b;//variables para leer los archivos
+    std::string linea_a,response="";//variables para leer los archivos
     if(bafer.good()){//se comprueba que el archivo exista
       while(!bafer.eof()){//se lee el archivo y se guarda en la variable response que se retornara como respuesta
-        getline(bafer,a); 
-        response+=a;
+        getline(bafer,linea_a); 
+        response+=linea_a;
       }
       //response = "HTTP/1.1 200 OK\r\nConnection: keep-alive\r\nContent-Type: text/html\r\nContent-Length:"+std::to_string(n.size())+"\r\n"+n;
     }else{//si no existe el archivo solicitado se envia la pagina 404
       std::ifstream error(notFoundFile+"404.html");
       while(!error.eof()){
-        getline(error,b); 
-        response+=b;
+        getline(error,linea_a); 
+        response+=linea_a;
       }
       //response = "HTTP/1.1 200 OK\r\nConnection: keep-alive\r\n Content-Type: text/html\r\nContent-Length:138\r\n \r\n"+m;
     } 
